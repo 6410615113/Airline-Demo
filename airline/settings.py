@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-6@quc)2b5qzz-$y0djc+m0qa9$0p(@2m!z@xc%g5_4itno@&+r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'flights',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +123,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CSRF_TRUSTED_ORIGINS = ['https://y7sf2w-8000.csb.app']
+
+# Add this code at the end
+try:
+    from .local_settings import *
+except ImportError:
+    pass
